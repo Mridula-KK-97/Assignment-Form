@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD and SUB count</title>
+</head>
+<body>
+
+<div style="display: flex;">
+    <button style="height: 50px;" onclick="decrease()">-</button>
+    <p id="firstp">0</p>
+    <button style="height: 50px;" onclick="increase()">+</button>
+</div>
+
+
+<script>
+    let count=0
+
+    function increase(){
+        count++;
+        document.getElementById("firstp").innerHTML=count;
+    }
+
+    function decrease(){
+        if(count>0){
+            count--;
+            document.getElementById("firstp").innerHTML=count;
+        }
+    }
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .form-group{
+            margin-left: 70px;
+            margin-right: 70px;
+            margin-top: 30px;
+        }
+
+        label{
+            font-size: medium;
+            font-family: 'Times New Roman', Times, serif;
+            color: gray;
+            
+           
+        }
+        input{
+            border: 1px solid gray;
+        }
+        
+        input:hover {
+            border-color: dodgerblue;
+            background-color: #f0f8ff;
+        }
+
+        textarea:hover{
+            border-color: dodgerblue;
+            background-color: #f0f8ff; 
+        }
+
+        .buttonhov:hover{
+            background-color: darkgreen;
+            border-color: darkgreen;
+            cursor: pointer;
+        }
+
+        .radiodiv:hover{
+            border-color: dodgerblue;
+            background-color: #f0f8ff;
+        }
+
+        @media only screen and (max-width: 600px){
+           .mediaque{
+                flex-direction: column;
+           } 
+        }        
+
+    </style>
+</head>
+<body>
+    <div  style="width: auto;height: 720px;background-color: aliceblue;display: flex; justify-content: center; align-items: center;">
+        <div  style="background-color: white;width: 700px; height: 550px;">
+            <form action="" class="form-group" onsubmit="validateForm(event)" autocomplete="off">
+            <h1 style="color:black;opacity:0.6 ;">Contact Us</h1>
+            
+            <div style="display: flex;" class="mediaque">
+            <div>
+                <label for="">First Name *</label><br>
+                <input type="text" id ="fname"style="width:250px;height: 35px; border-radius: 5px;" required>
+            </div>
+            <div style="margin-left: 50px;">
+                <label for="">Last Name *</label><br>
+                <input type="text" id ="lname" style="width:250px;height: 35px;border-radius: 5px;" required>
+            </div>
+           </div> 
+           
+           <div style="margin-top: 15px;">
+            <label for="">Email Address *</label><br>
+            <input type="email" id="email" style="width:560px;height: 39px;border-radius: 5px;" required>
+           </div>
+
+           <div style="margin-top: 15px;">
+                <label for="">Query Type *</label>
+                <div style="display: flex;">
+                <div class="radiodiv"style="width: 260px;height: 30px;border: 1px solid gray;border-radius: 5px;padding: 6px;">
+                    <input type="radio" id="general" name="enquiry"><label for="">General Enquiry</label>
+                </div>
+                <div class="radiodiv"style="width: 260px;height: 30px;border: 1px solid gray; margin-left: 50px;border-radius: 5px;padding: 6px;">
+                    <input type="radio" id="support" name="enquiry" required><label for="">Support Request</label>
+                </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 15px; ">
+                <label for="">Message *</label><br>
+                <textarea id="message" style="width: 560px;height: 70px;border-radius: 5px;" required></textarea>
+            </div>
+
+            <div style="margin-top: 15px;">
+                <input type="checkbox" id="checkbox" required><label for="">I consent to being contacted by the team *</label>
+            </div>
+
+            
+            <button type="submit" class="buttonhov" style="width: 570px;height: 45px;background-color:seagreen;border-radius: 5px;border: 1px solid seagreen;color: white;margin-top: 15px;">Submit</button>
+            
+        </form>
+        </div>
+    </div>
+
+    <script>
+        function validateForm(event) {
+        event.preventDefault();
+
+        const firstname=document.getElementById("fname").value.trim();
+        const lastname=document.getElementById("lname").value.trim();
+        const email=document.getElementById("email").value.trim();
+        const queryselected = document.querySelector('input[name="enquiry"]:checked');
+        const message=document.getElementById("message").value.trim();
+        const termsAccepted = document.getElementById("checkbox").checked;
+
+        if (firstname === "" ||lastname === ""|| email === "" || message === "" || !queryselected || !termsAccepted) {
+        alert("Please fill in all fields and accept the terms.");
+        } 
+        else {
+            alert("Message sent");
+            event.target.closest("form").reset(); // optional: clears form
+        }
+    }
+
+    </script>
+</body>
+</html>
